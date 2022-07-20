@@ -9,21 +9,12 @@ function Main(props) {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    api
-      .getUserInfo()
-      .then((res) => {
-        setUserName(res.name);
-        setUserDescription(res.about);
-        setUserAvatar(res.avatar);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    api
-      .getInitialcards()
-      .then((res) => {
-        setCards(res);
+    Promise.all([api.getUserInfo(), api.getInitialcards()])
+      .then(([user, cards]) => {
+        setUserName(user.name);
+        setUserDescription(user.description);
+        setUserAvatar(user.avatar);
+        setCards(cards);
       })
       .catch((err) => console.log(err));
   }, []);
