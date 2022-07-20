@@ -56,4 +56,8 @@ Link to the project on GitHub pages : [Around the U.S ReactJS](https://chen-abud
 
 #### 320px Resolution
 
+
+https://user-images.githubusercontent.com/98914366/180032748-7895135e-cdae-4537-8402-2189bafeee4b.mp4
+
+
 ![](./src/images/320px.png)
