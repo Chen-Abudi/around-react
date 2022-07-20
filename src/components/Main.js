@@ -12,7 +12,7 @@ function Main(props) {
     Promise.all([api.getUserInfo(), api.getInitialcards()])
       .then(([user, cards]) => {
         setUserName(user.name);
-        setUserDescription(user.description);
+        setUserDescription(user.about);
         setUserAvatar(user.avatar);
         setCards(cards);
       })
