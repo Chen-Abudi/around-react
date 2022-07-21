@@ -55,16 +55,17 @@ function Main(props) {
 
       <section className="postcards">
         <ul className="postcards__list">
-          {cards.map((card) => {
-            return (
-              <Card
-                card={card}
-                key={card._id}
-                onCardClick={props.onCardClick}
-                onRemoveCardClick={props.onRemoveCardClick}
-              />
-            );
-          })}
+          {cards.map((card) => (
+            <Card
+              card={card}
+              key={card._id}
+              link={card.link}
+              name={card.name}
+              likesCounter={card.likes.length}
+              onCardClick={props.onCardClick}
+              onRemoveCardClick={props.onRemoveCardClick}
+            />
+          ))}
         </ul>
       </section>
     </main>

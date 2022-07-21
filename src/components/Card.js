@@ -1,12 +1,19 @@
 import React from "react";
 
-function Card(props) {
+function Card({
+  card,
+  link,
+  name,
+  likesCounter,
+  onCardClick,
+  onRemoveCardClick,
+}) {
   function handleClick() {
-    props.onCardClick(props.card);
+    onCardClick(card);
   }
 
   function handleRemoveClick() {
-    props.onRemoveCardClick(props.card);
+    onRemoveCardClick(card);
   }
 
   return (
@@ -16,24 +23,22 @@ function Card(props) {
         aria-label="remove postcard"
         type="button"
         onClick={handleRemoveClick}
-      ></button>
+      />
       <img
         className="postcard__image"
-        src={props.card.link}
-        alt={props.card.name}
+        src={link}
+        alt={name}
         onClick={handleClick}
       />
       <div className="postcard__title-area">
-        <h2 className="postcard__title">{props.card.name}</h2>
+        <h2 className="postcard__title">{name}</h2>
         <div className="postcard__like-container">
           <button
             className="postcard__like-button"
             aria-label="like-or-unlike-postcard"
             type="button"
-          ></button>
-          <span className="postcard__like-counter">
-            {props.card.likes.length}
-          </span>
+          />
+          <span className="postcard__like-counter">{likesCounter}</span>
         </div>
       </div>
     </li>
