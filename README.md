@@ -23,7 +23,7 @@ It was built mainly with ReactJS and uses REST API. It's ReactJS version of
 - CSS3
 - React Hooks (useState, useEffect, useRef)
 - React Global State (createContext)
-- React Function Components
+- React Functional Components
 - Grid, flex, forms, animation
 - Adaptive layout
 - Flat BEM file structure
