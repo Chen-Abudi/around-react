@@ -1,4 +1,4 @@
-# Project 10 : Around the U.S (React.js)
+# Project 10-11 : Around the U.S (React.js)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -18,9 +18,12 @@ It was built mainly with ReactJS and uses REST API. It's ReactJS version of
 
 ## Languages & Techniques
 
-- HTML5, CSS3
-- Javascript
 - ReactJS
+- Javascript
+- CSS3
+- React Hooks (useState, useEffect, useRef)
+- React Global State (createContext)
+- React Function Components
 - Grid, flex, forms, animation
 - Adaptive layout
 - Flat BEM file structure
@@ -49,8 +52,6 @@ Link to the project on GitHub pages : [Around the U.S ReactJS](https://chen-abud
 #### Overview
 
 ![](./src/images/overview.png)
-
-https://user-images.githubusercontent.com/98914366/180032748-7895135e-cdae-4537-8402-2189bafeee4b.mp4
 
 #### 620px - 916px Resolution
 

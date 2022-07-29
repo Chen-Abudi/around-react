@@ -1,55 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { api } from "../utils/Api";
+import React from "react";
 import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Main(props) {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialcards()])
-      .then(([user, cards]) => {
-        setUserName(user.name);
-        setUserDescription(user.about);
-        setUserAvatar(user.avatar);
-        setCards(cards);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+function Main({
+  onEditAvatarClick,
+  onEditProfileClick,
+  onAddPlaceClick,
+  onCardClick,
+  onCardLike,
+  onCardDelete,
+  cards,
+}) {
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="content">
       <section className="profile">
-        <div
-          className="profile__image-overlay"
-          onClick={props.onEditAvatarClick}
-        >
+        <div className="profile__image-overlay" onClick={onEditAvatarClick}>
           <img
             className="profile__image"
-            src={userAvatar}
+            src={currentUser.avatar}
             alt="User's Profile Pic"
           />
         </div>
         <div className="profile__info">
           <div className="profile__person">
-            <h1 className="profile__name">{userName}</h1>
+            <h1 className="profile__name">{currentUser.name}</h1>
 
             <button
               className="profile__edit-button"
               type="button"
               aria-label="open-edit-profile-modal"
-              onClick={props.onEditProfileClick}
+              onClick={onEditProfileClick}
             ></button>
           </div>
-          <p className="profile__description">{userDescription}</p>
+          <p className="profile__description">{currentUser.about}</p>
         </div>
         <button
           className="profile__add-button"
           type="button"
           aria-label="open-new-card-modal"
-          onClick={props.onAddPlaceClick}
+          onClick={onAddPlaceClick}
         ></button>
       </section>
 
@@ -57,13 +48,12 @@ function Main(props) {
         <ul className="postcards__list">
           {cards.map((card) => (
             <Card
-              card={card}
               key={card._id}
-              link={card.link}
-              name={card.name}
               likesCounter={card.likes.length}
-              onCardClick={props.onCardClick}
-              onRemoveCardClick={props.onRemoveCardClick}
+              onCardClick={onCardClick}
+              onCardDelete={onCardDelete}
+              onCardLike={onCardLike}
+              card={card}
             />
           ))}
         </ul>

@@ -39,12 +39,12 @@ class Api {
     }).then(this._processResponse);
   }
 
-  setUserAvatar(link) {
+  setUserAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: link,
+        avatar,
       }),
     }).then(this._processResponse);
   }
@@ -64,8 +64,8 @@ class Api {
     }).then(this._processResponse);
   }
 
-  cardLike(cardId, isItLiked) {
-    const method = isItLiked ? "DELETE" : "PUT";
+  cardLike(cardId, isLiked) {
+    const method = isLiked ? "DELETE" : "PUT";
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: method,
       headers: this._headers,
