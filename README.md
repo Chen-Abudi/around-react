@@ -42,6 +42,7 @@ It was built mainly with ReactJS and uses REST API. It's ReactJS version of
 - Optimize the page speed and adding security.
 - Additional animations.
 - Option to select postcards group to remove together.
+- Option to add images from pc.
 - Using Backend to store the forms contact changes.
 - User Registration.
 
