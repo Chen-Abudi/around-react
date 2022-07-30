@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser, isRenderLoading }) {
-  const currentUser = React.useContext(CurrentUserContext);
+function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
+  const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [isNameValids, setIsNameValids] = useState(true);
@@ -20,25 +20,23 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isRenderLoading }) {
     setDescriptionErrorMessage("");
   }, [currentUser, isOpen]);
 
-  function handleInputsModify(evt) {
-    const { name, value, validity, validationMessage } = evt.target;
-    switch (name) {
-      case "username": {
-        setName(value);
-        setIsNameValids(validity.valid);
-        !validity.valid && setNameErrorMessage(validationMessage);
-        break;
-      }
-      case "userjob": {
-        setDescription(value);
-        setIsDescriptionValids(validity.valid);
-        !validity.valid && setDescriptionErrorMessage(validationMessage);
-        break;
-      }
-      default:
-        break;
+  const handleUserNameChange = (evt) => {
+    const { value, validity, validationMessage } = evt.target;
+    setName(value);
+    setIsNameValids(validity.valid);
+    if (!validity.valid) {
+      setNameErrorMessage(validationMessage);
     }
-  }
+  };
+
+  const handleUserJobChange = (evt) => {
+    const { value, validity, validationMessage } = evt.target;
+    setDescription(value);
+    setIsDescriptionValids(validity.valid);
+    if (!validity.valid) {
+      setDescriptionErrorMessage(validationMessage);
+    }
+  };
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -55,13 +53,13 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isRenderLoading }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText={isRenderLoading ? "Saving..." : "Save"}
+      buttonText={isLoading ? "Saving..." : "Save"}
     >
       <fieldset className="form__fieldset">
         <input
           className={`form__input ${!isNameValids && `form__input_type_error`}`}
           value={name}
-          onChange={handleInputsModify}
+          onChange={handleUserNameChange}
           type="text"
           name="username"
           id="input-name"
@@ -85,7 +83,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isRenderLoading }) {
             !isDescriptionValids && `form__input_type_error`
           }`}
           value={description}
-          onChange={handleInputsModify}
+          onChange={handleUserJobChange}
           type="text"
           name="userjob"
           placeholder="About Me"

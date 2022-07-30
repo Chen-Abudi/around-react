@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isRenderLoading }) {
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
   const [isAvatarLinkValid, setIsAvatarLinkValid] = useState(true);
   const [avatarLinkErrorMessage, setAvatarLinkErrorMessage] = useState("");
   const avatarRef = useRef();
@@ -30,7 +30,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isRenderLoading }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText={isRenderLoading ? "Saving..." : "Save"}
+      buttonText={isLoading ? "Saving..." : "Save"}
     >
       <fieldset className="form__fieldset">
         <input

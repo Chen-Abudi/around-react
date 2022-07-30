@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
@@ -11,7 +11,7 @@ function Main({
   onCardDelete,
   cards,
 }) {
-  const currentUser = React.useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="content">
@@ -32,7 +32,7 @@ function Main({
               type="button"
               aria-label="open-edit-profile-modal"
               onClick={onEditProfileClick}
-            ></button>
+            />
           </div>
           <p className="profile__description">{currentUser.about}</p>
         </div>
@@ -41,7 +41,7 @@ function Main({
           type="button"
           aria-label="open-new-card-modal"
           onClick={onAddPlaceClick}
-        ></button>
+        />
       </section>
 
       <section className="postcards">

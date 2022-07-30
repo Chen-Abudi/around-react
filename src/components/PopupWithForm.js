@@ -30,7 +30,7 @@ function PopupWithForm({
           type="button"
           aria-label="close-delete-modal"
           onClick={onClose}
-        ></button>
+        />
         <h2 className="popup__title">{title}</h2>
         <form
           action="#"

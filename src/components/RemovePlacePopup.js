@@ -1,13 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function RemovePlacePopup({
-  card,
-  isOpen,
-  onClose,
-  onCardDelete,
-  isRenderLoading,
-}) {
+function RemovePlacePopup({ card, isOpen, onClose, onCardDelete, isLoading }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     onCardDelete(card);
@@ -17,7 +11,7 @@ function RemovePlacePopup({
     <PopupWithForm
       title="Are You Sure?"
       name="remove-card"
-      buttonText={isRenderLoading ? "Removing..." : "Yes"}
+      buttonText={isLoading ? "Removing..." : "Yes"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

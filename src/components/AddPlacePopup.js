@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup({ isOpen, onClose, onAddPlace, isRenderLoading }) {
+function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
   const [cardsName, setCardsName] = useState("");
   const [cardsImageLink, setCardsImageLink] = useState("");
-  const [isCardsNameValids, setIsCardsNameValids] = useState(true);
-  const [isCardsImageLinkValids, setIsCardsImageLinkValids] = useState(true);
+  const [isCardsNameValid, setIsCardsNameValid] = useState(true);
+  const [isCardsImageLinkValid, setIsCardsImageLinkValid] = useState(true);
   const [cardsNameErrorMessage, setCardsNameErrorMessage] = useState("");
   const [cardsImageLinkErrorMessage, setCardsImageLinkErrorMessage] =
     useState("");
@@ -13,31 +13,29 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isRenderLoading }) {
   useEffect(() => {
     setCardsName("");
     setCardsImageLink("");
-    setIsCardsNameValids(true);
-    setIsCardsImageLinkValids(true);
+    setIsCardsNameValid(true);
+    setIsCardsImageLinkValid(true);
     setCardsNameErrorMessage("");
     setCardsImageLinkErrorMessage("");
   }, [isOpen]);
 
-  function handleInputsModify(evt) {
-    const { name, value, validity, validationMessage } = evt.target;
-    switch (name) {
-      case "name": {
-        setCardsName(value);
-        setIsCardsNameValids(validity.valid);
-        !validity.valid && setCardsNameErrorMessage(validationMessage);
-        break;
-      }
-      case "link": {
-        setCardsImageLink(value);
-        setIsCardsImageLinkValids(validity.valid);
-        !validity.valid && setCardsImageLinkErrorMessage(validationMessage);
-        break;
-      }
-      default:
-        break;
+  const handleTitleChange = (evt) => {
+    const { value, validity, validationMessage } = evt.target;
+    setCardsName(value);
+    setIsCardsNameValid(validity.valid);
+    if (!validity.valid) {
+      setCardsNameErrorMessage(validationMessage);
     }
-  }
+  };
+
+  const handleImageLinkChange = (evt) => {
+    const { value, validity, validationMessage } = evt.target;
+    setCardsImageLink(value);
+    setIsCardsImageLinkValid(validity.valid);
+    if (!validity.valid) {
+      setCardsImageLinkErrorMessage(validationMessage);
+    }
+  };
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -51,12 +49,12 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isRenderLoading }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText={isRenderLoading ? "Creating..." : "Create"}
+      buttonText={isLoading ? "Creating..." : "Create"}
     >
       <fieldset className="form__fieldset">
         <input
           className={`form__input ${
-            !isCardsNameValids && `form__input_type_error`
+            !isCardsNameValid && `form__input_type_error`
           }`}
           type="text"
           name="name"
@@ -64,14 +62,14 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isRenderLoading }) {
           placeholder="Title"
           minLength="1"
           maxLength="30"
-          onChange={handleInputsModify}
+          onChange={handleTitleChange}
           value={cardsName}
           required
         />
 
         <span
           className={`form__input-error ${
-            !isCardsNameValids && `form__input-error_visible`
+            !isCardsNameValid && `form__input-error_visible`
           }`}
           id="input-title-error"
         >
@@ -80,20 +78,20 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isRenderLoading }) {
 
         <input
           className={`form__input ${
-            !isCardsImageLinkValids && `form__input_type_error`
+            !isCardsImageLinkValid && `form__input_type_error`
           }`}
           type="url"
           name="link"
           id="input-url"
           placeholder="Image Link"
-          onChange={handleInputsModify}
+          onChange={handleImageLinkChange}
           value={cardsImageLink}
           required
         />
 
         <span
           className={`form__input-error ${
-            !isCardsImageLinkValids && `form__input-error_visible`
+            !isCardsImageLinkValid && `form__input-error_visible`
           }`}
           id="input-url-error"
         >
