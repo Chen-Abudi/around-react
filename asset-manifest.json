@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/around-react/static/css/main.d3ea93ec.css",
-    "main.js": "/around-react/static/js/main.0327f037.js",
-    "static/js/787.1c78f32b.chunk.js": "/around-react/static/js/787.1c78f32b.chunk.js",
+    "main.css": "/around-react/static/css/main.b492f3bb.css",
+    "main.js": "/around-react/static/js/main.dde80dfb.js",
+    "static/js/496.ff3a6cec.chunk.js": "/around-react/static/js/496.ff3a6cec.chunk.js",
     "static/media/Inter-Medium.woff": "/around-react/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/around-react/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/around-react/static/media/Inter-Regular.8c206db99195777c6769.woff",
@@ -18,12 +18,12 @@
     "static/media/close-icon.svg": "/around-react/static/media/close-icon.0ca722bc0e922fcea36e.svg",
     "static/media/edit-button.svg": "/around-react/static/media/edit-button.6c7bf05444b9793fdf6e.svg",
     "static/media/add-button.svg": "/around-react/static/media/add-button.bed8c136e13907f5eefb.svg",
-    "main.d3ea93ec.css.map": "/around-react/static/css/main.d3ea93ec.css.map",
-    "main.0327f037.js.map": "/around-react/static/js/main.0327f037.js.map",
-    "787.1c78f32b.chunk.js.map": "/around-react/static/js/787.1c78f32b.chunk.js.map"
+    "main.b492f3bb.css.map": "/around-react/static/css/main.b492f3bb.css.map",
+    "main.dde80dfb.js.map": "/around-react/static/js/main.dde80dfb.js.map",
+    "496.ff3a6cec.chunk.js.map": "/around-react/static/js/496.ff3a6cec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3ea93ec.css",
-    "static/js/main.0327f037.js"
+    "static/css/main.b492f3bb.css",
+    "static/js/main.dde80dfb.js"
   ]
 }
